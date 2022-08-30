@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - "5443:5443"
+    container_name: nucampsiteserver
+    networks:
+        - nucamp
+  client:
+    environment:
+      SKIP_PREFLIGHT_CHECK: "true"
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    container_name: client
+    stdin_open: true
+    networks:
+        - nucamp
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    # volumes:
+    #     - ./data-node:/data/db
+    ports:
+        - 27017:27017
+    command: mongod --noauth
+    networks:
+        - nucamp
+networks:
+    nucamp:
+        driver: bridge
