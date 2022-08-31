@@ -35,3 +35,4 @@ services:
 networks:
     nucamp:
         driver: bridge
+#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
