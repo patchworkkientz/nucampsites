@@ -3,6 +3,7 @@ services:
   server:
     build:
       context: ./server
+    image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-server
     ports:
       - "5443:5443"
     container_name: nucampsiteserver
@@ -13,6 +14,7 @@ services:
       SKIP_PREFLIGHT_CHECK: "true"
     build:
       context: ./client
+    image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-client
     ports:
       - "3000:3000"
     container_name: client
@@ -20,7 +22,7 @@ services:
     networks:
         - nucamp
   mongodb:
-    image: mongo
+    image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-mongo
     restart: always
     container_name: mongodb
     # volumes:

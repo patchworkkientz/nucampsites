@@ -1,2 +1,3 @@
-export const baseUrl = 'https://localhost:5443/'; //will need to update if you stop and re-start ec2 instance
-//http://13.56.191.168/
+export const baseUrl = 'https://3.101.198.85/';
+// 3.101.198.85/
+// https://localhost:5443/
