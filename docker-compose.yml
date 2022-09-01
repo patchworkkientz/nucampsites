@@ -5,7 +5,7 @@ services:
       context: ./server
     image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-server
     ports:
-      - "5443:5443"
+      - "443:443"
     container_name: nucampsiteserver
     networks:
         - nucamp
@@ -16,7 +16,7 @@ services:
       context: ./client
     image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-client
     ports:
-      - "3000:3000"
+      - "80:3000"
     container_name: client
     stdin_open: true
     networks:
