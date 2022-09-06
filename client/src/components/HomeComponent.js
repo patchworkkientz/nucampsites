@@ -4,6 +4,10 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform } from 'react-animation-components';
 
+console.log("baseUrl", baseUrl)
+console.log("PRODUCTION", process.env.REACT_APP_PRODUCTION)
+console.log(typeof process.env.REACT_APP_PRODUCTION)
+
 function RenderCard({item, isLoading, errMess}) {
     if (isLoading) {
         return <Loading />;

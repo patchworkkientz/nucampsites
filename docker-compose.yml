@@ -14,7 +14,7 @@ services:
   client:
     environment:
       SKIP_PREFLIGHT_CHECK: "true"
-      PRODUCTION: "true"
+      REACT_APP_PRODUCTION: "true"
     build:
       context: ./client
     image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-client
