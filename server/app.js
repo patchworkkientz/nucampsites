@@ -17,6 +17,7 @@ const commentRouter = require('./routes/commentRouter');
 const mongoose = require('mongoose');
 
 const url = config.mongoUrl;
+
 const connect = mongoose.connect(url, {
     useCreateIndex: true,
     useFindAndModify: false,
@@ -24,19 +25,22 @@ const connect = mongoose.connect(url, {
     useUnifiedTopology: true
 });
 
-connect.then(() => console.log('Connected correctly to server'),
+connect.then(() => console.log('Connected correctly to MongoDB server'),
     err => console.log(err)
 );
 
 var app = express();
+
+//console.log(`Currently in ${process.env.NODE_ENV} mode`)
 
 // Secure traffic only
 app.all('*', (req, res, next) => {
     if (req.secure) {
         return next();
     } else {
-        console.log(`Redirecting to: https://${req.hostname}:${app.get('secPort')}${req.url}`);
-        res.redirect(301, `https://${req.hostname}:${app.get('secPort')}${req.url}`);
+        //console.log(`Redirecting to: https://${req.hostname}:${app.get('secPort')}${req.url}`);
+        //res.redirect(301, `https://${req.hostname}:${app.get('secPort')}${req.url}`);
+        return next();
     }
 });
 
