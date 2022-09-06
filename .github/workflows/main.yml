@@ -34,7 +34,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           
-      - run: echo "Python has been set up."
+      - run: |
+          npm install
+          echo "Node has been set up."
        
       - name: Run the Node code in app.js
         run: |
