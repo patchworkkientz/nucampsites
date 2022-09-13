@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  server:
+    environment:
+      CONTAINERS: "true"
+    # build:
+    #   context: ./server
+    # image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-server
+    image: "patchkientz/nucampsiteserver:latest"
+    ports:
+      - "5000:5000"
+    container_name: nucampsiteserver
+    networks:
+        - nucamp
+  client:
+    environment:
+      SKIP_PREFLIGHT_CHECK: "true"
+      REACT_APP_PRODUCTION: "true"
+    # build:
+    #   context: ./client
+    # image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-client
+    image: "patchkientz/client:latest"
+    ports:
+      - "80:3000"
+    container_name: client
+    stdin_open: true
+    networks:
+        - nucamp
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    volumes:
+        - ./data:/data/db
+    ports:
+        - 27017:27017
+    command: mongod --noauth
+    networks:
+        - nucamp
+networks:
+    nucamp:
+        driver: bridge
