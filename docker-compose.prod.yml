@@ -3,9 +3,6 @@ services:
   server:
     environment:
       CONTAINERS: "true"
-    # build:
-    #   context: ./server
-    # image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-server
     image: "patchkientz/nucampsiteserver:latest"
     ports:
       - "5000:5000"
@@ -16,12 +13,9 @@ services:
     environment:
       SKIP_PREFLIGHT_CHECK: "true"
       REACT_APP_PRODUCTION: "true"
-    # build:
-    #   context: ./client
-    # image: 493549863063.dkr.ecr.us-west-1.amazonaws.com/nucampsite-aws-docker:nucampsite-aws-client
     image: "patchkientz/client:latest"
     ports:
-      - "80:3000"
+      - "80:80"
     container_name: client
     stdin_open: true
     networks:
