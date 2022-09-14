@@ -17,6 +17,7 @@
 FROM node:15-alpine3.10 as build
 ENV NODE_ENV production
 ENV SKIP_PREFLIGHT_CHECK true
+ENV REACT_APP_PRODUCTION true
 LABEL version="1.0"
 LABEL description="This is the base docker image for prod frontend react app."
 LABEL maintainer = ["abc@gmail.com", "anc@gmail.com"]

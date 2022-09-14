@@ -12,7 +12,6 @@ services:
   client:
     environment:
       SKIP_PREFLIGHT_CHECK: "true"
-      REACT_APP_PRODUCTION: "true"
     image: "patchkientz/client:latest"
     ports:
       - "80:80"
