@@ -34,11 +34,33 @@ COPY . ./
 RUN npm run build
 
 
-# production environment
-FROM nginx:1.19.10-alpine
+# # production environment
+# FROM nginx:1.19.10-alpine
+# COPY --from=build /app/build /usr/share/nginx/html
+
+# RUN mkdir /etc/letsencrypt
+# COPY letsencrypt/live/topatol.com/fullchain.pem /etc/letsencrypt
+# COPY letsencrypt/live/topatol.com/privkey.pem /etc/letsencrypt
+
+# COPY --from=build /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# EXPOSE 80:80
+# EXPOSE 443:443
+# CMD ["nginx", "-g", "daemon off;"]
+
+FROM nginx
+
 COPY --from=build /app/build /usr/share/nginx/html
 
+RUN mkdir /etc/letsencrypt
+
+COPY letsencrypt/live/topatol.com/fullchain.pem /etc/letsencrypt
+
+COPY letsencrypt/live/topatol.com/privkey.pem /etc/letsencrypt
+
+RUN rm /etc/nginx/conf.d/default.conf
+
 COPY --from=build /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80:80
 EXPOSE 443:443
 CMD ["nginx", "-g", "daemon off;"]
