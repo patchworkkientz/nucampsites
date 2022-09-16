@@ -6,6 +6,7 @@ services:
     image: "patchkientz/nucampsiteserver:latest"
     ports:
       - "5000:5000"
+      - "5443:5443"
     container_name: nucampsiteserver
     networks:
         - nucamp

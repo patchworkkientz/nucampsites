@@ -40,8 +40,8 @@ server.on('listening', onListening);
  */
 
 const options = {
-  key: fs.readFileSync(__dirname+'/localhost_certificates/server.key'),
-  cert: fs.readFileSync(__dirname+'/localhost_certificates/server.cert')
+  key: fs.readFileSync('/etc/letsencrypt/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/fullchain.pem')
 };
 
 const secureServer = https.createServer(options, app);
