@@ -1,8 +1,6 @@
 version: "3.8"
 services:
   server:
-    environment:
-      CONTAINERS: "true"
     image: "patchkientz/nucampsiteserver:latest"
     ports:
       - "5000:5000"
@@ -11,8 +9,6 @@ services:
     networks:
         - nucamp
   client:
-    environment:
-      SKIP_PREFLIGHT_CHECK: "true"
     image: "patchkientz/client:latest"
     ports:
       - "80:80"

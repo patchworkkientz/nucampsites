@@ -39,10 +39,17 @@ server.on('listening', onListening);
  * Create HTTPS server.
  */
 
-const options = {
-  key: fs.readFileSync('/etc/letsencrypt/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/fullchain.pem')
-};
+if (process.env.NODE_ENV === "production") {
+  options = {
+    key: fs.readFileSync('/etc/letsencrypt/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/fullchain.pem')
+  }
+} else {
+  options = {
+    key: fs.readFileSync(__dirname+'/localhost_certificates/server.key'),
+    cert: fs.readFileSync(__dirname+'/localhost_certificates/server.cert')
+  }
+}
 
 const secureServer = https.createServer(options, app);
 

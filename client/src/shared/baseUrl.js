@@ -1,1 +1,1 @@
-export const baseUrl = (process.env.REACT_APP_PRODUCTION ? 'http://3.101.198.85:5000/' : 'http://localhost:5000/');
+export const baseUrl = (process.env.REACT_APP_PRODUCTION ? 'https://topatol.com:5443/' : 'http://localhost:5000/');
