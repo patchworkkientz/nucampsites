@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   server:
-    image: "patchkientz/nucampsiteserver:latest"
+    image: "patchkientz/nucampsite-aws-server:latest"
     ports:
       - "5000:5000"
       - "5443:5443"
@@ -9,7 +9,7 @@ services:
     networks:
         - nucamp
   client:
-    image: "patchkientz/client:latest"
+    image: "patchkientz/nucampsite-aws-client:latest"
     ports:
       - "80:80"
       - "443:443"
