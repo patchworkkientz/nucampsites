@@ -41,8 +41,8 @@ server.on('listening', onListening);
 
 if (process.env.NODE_ENV === "production") {
   options = {
-    key: fs.readFileSync('/etc/letsencrypt/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/fullchain.pem')
+    key: fs.readFileSync('/etc/letsencrypt/live/topatol.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/topatol.com/fullchain.pem')
   }
 } else {
   options = {

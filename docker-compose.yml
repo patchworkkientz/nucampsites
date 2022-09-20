@@ -7,8 +7,10 @@ services:
       - "5000:5000"
       - "5443:5443"
     container_name: nucampsiteserver
+    volumes:
+      - ./letsencrypt/:/etc/letsencrypt
     networks:
-        - nucamp
+      - nucamp
   client:
     build:
       context: ./client
@@ -16,20 +18,22 @@ services:
       - "80:80"
       - "443:443"
     container_name: client
+    volumes:
+      - ./letsencrypt/:/etc/letsencrypt
     stdin_open: true
     networks:
-        - nucamp
+      - nucamp
   mongodb:
     image: mongo
     restart: always
     container_name: mongodb
     volumes:
-        - ./data:/data/db
+      - ./data:/data/db
     ports:
-        - 27017:27017
+      - 27017:27017
     command: mongod --noauth
     networks:
-        - nucamp
+      - nucamp
 networks:
-    nucamp:
-        driver: bridge
+  nucamp:
+    driver: bridge

@@ -51,11 +51,11 @@ FROM nginx
 
 COPY --from=build /app/build /usr/share/nginx/html
 
-RUN mkdir /etc/letsencrypt
+# RUN mkdir /etc/letsencrypt
 
-COPY letsencrypt/live/topatol.com/fullchain.pem /etc/letsencrypt
+# COPY letsencrypt/live/topatol.com/fullchain.pem /etc/letsencrypt
 
-COPY letsencrypt/live/topatol.com/privkey.pem /etc/letsencrypt
+# COPY letsencrypt/live/topatol.com/privkey.pem /etc/letsencrypt
 
 RUN rm /etc/nginx/conf.d/default.conf
 
